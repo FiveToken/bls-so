@@ -1,0 +1,21 @@
+[package]
+name = "blsso"
+version = "0.1.0"
+authors = ["lifeng <lifeng@ipfsforce.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+# this is needed to build for iOS and Android.
+[lib]
+name = "blsso"
+crate-type = ["staticlib", "cdylib"]
+
+# this dependency is only needed for Android.
+[target.'cfg(target_os = "android")'.dependencies]
+jni = { version = "0.13.1", default-features = false }
+
+[dependencies]
+bls-signatures = { git = "https://github.com/beeleelee/bls-signatures.git", rev = "ec2b9226e7" }
+ff = "0.6"
+regex = "1"
+base64 = "0.12.0"
